@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>번호</th>
+        <th>이름</th>
+        <th>비밀번호</th>
+    </tr>
+    <tr th:each="each:${each}">
+        <td th:text="${each.id}"></td>
+        <td th:text="${each.username}"></td>
+        <td th:text="${each.userpw}"></td>
+    </tr>
+</table>
+</body>
+</html>

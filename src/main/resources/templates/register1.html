@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script th:src="@{/js/register.js}" defer></script>
+</head>
+<body>
+    아이디 : <input type="text" name="username" id="username" >
+    <input type="button" value="중복체크" id="dupCheck"> <br>
+    비밀번호 :  <input type="text" name="userpw" id="userpw"> <br>
+    <input type="button" id="submitBtn" value="회원가입">
+</body>
+</html>
