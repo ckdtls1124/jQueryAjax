@@ -34,17 +34,14 @@ public class MemberService {
 
     }
 
-    public MemberDTO showLists() {
-        List<MemberEntity> result;
-        MemberDTO memberDTO=new MemberDTO();
+    public List<MemberDTO> showLists() {
+        List<MemberEntity> result=memberRepo.findAll();
+        List<MemberDTO> dto=new ArrayList<>();
 
-        result=memberRepo.findAll();
-        for(MemberEntity i:result){
-            memberDTO.setId(i.getId());
-            memberDTO.setUsername(i.getUsername());
-            memberDTO.setUserpw(i.getUserpw());
+        for (MemberEntity i:result){
+            dto.add(MemberDTO.MemberDTOResp.toDTO(i));
         }
-        return memberDTO;
+        return dto;
     }
 
     @Transactional
@@ -54,6 +51,15 @@ public class MemberService {
             return 1;
         } else {
             return 0;
+        }
+    }
+
+    public MemberDTO showEachList(Long id) {
+        Optional<MemberEntity> result=memberRepo.findById(id);
+        if(result.isPresent()){
+            return MemberDTO.MemberDTOResp.toDTO(result.get());
+        } else {
+            return null;
         }
     }
 }

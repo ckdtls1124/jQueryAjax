@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script th:src="@{/ajaxJs/ajax2.js}" defer></script>
+<!--    <script th:src="@{/ajaxJs/ajax2OneList.js}" defer></script>-->
+</head>
+<body>
+<div>
+    <h1>list</h1>
+    <button id="ajaxBtn">AjaxButton</button>
+    <a th:href="@{/ajax/listsPage}" >Go to lists page</a>
+</div>
+<table border="1" id="list">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>password</th>
+        <th>Detail</th>
+    </tr>
+    </thead>
+    <tbody>
+
+
+
+    </tbody>
+</table>
+
+</body>
+</html>

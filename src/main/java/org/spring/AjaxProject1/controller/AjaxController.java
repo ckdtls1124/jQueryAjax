@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/ajax")
 public class AjaxController {
@@ -32,23 +34,54 @@ public class AjaxController {
 
 //=======================================================
 
+
+
+//=======================Register========================
     @GetMapping("/registerMain")
     public String showRegister(){
         return "register1";
     }
-
-    @PostMapping("/register")
-    public @ResponseBody int register( @ModelAttribute MemberDTO memberDTO)
-    {int rs=memberService.register(memberDTO);
-        return rs;
-    }
-
+//    Duplication Check
     @PostMapping("/dupCheck")
     public @ResponseBody int dupCheck(@RequestParam String username){
         int rs=memberService.dupCheck(username);
 
         return rs;
     }
+//    Register
+    @PostMapping("/register")
+    public @ResponseBody int register( @ModelAttribute MemberDTO memberDTO)
+    {int rs=memberService.register(memberDTO);
+        return rs;
+    }
+
+//=======================Show==========================
+
+//    go to Lists Page
+    @GetMapping("/listsPage")
+    public String goListsPage(){
+        return "ajax_ex/ajax_list";
+    }
 
 
+//    show all the lists
+    @GetMapping("/showLists")
+    public @ResponseBody List<MemberDTO> showAllLists(){
+        List<MemberDTO> result=memberService.showLists();
+        return result;
+    }
+
+//    show each list
+    @PostMapping("/detailList")
+    public @ResponseBody MemberDTO showEachList(@RequestParam Long id){
+        MemberDTO dto=memberService.showEachList(id);
+        if(dto != null){
+            System.out.println("Show "+id+"'s data went successful.");
+            return dto;
+        } else {
+            System.out.println("Nothing returned.");
+            return null;
+        }
+
+    }
 }
